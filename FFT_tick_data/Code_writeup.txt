@@ -1,0 +1,14 @@
+Code Writeup
+
+In this Programming Assignment, we create a Filtering instance x and call run_the_filter on this object with command line arguments. There are 4 arguments which are the no_of_terms to consider (dominant terms), no_of_data_points, input file and output file.
+
+Broadly we get the data and read it into a column vector called data, we filter the data using FFT's and then finally we write the filtered_data back into an output file.  
+
+Within the filter_data function we call two helper functions compute_mean and compute_magnitude which computes the mean of a particular column vector, while the magnitude function computes the magnitude which is the square root of the sum of individual real and imaginary vector parts squared. 
+
+We subtract the mean from the dataset. Then we call RealFFT which breaks down the data into the real and imaginary parts. Following this, we compute the magnitude and store it in the magnitude vector. Next step is creating a two dimensional array: first col is the index; second col is the
+magnitude. This 2-D array is sorted using the 2nd col, which is the magnitude. 
+
+Based on the top no_of_terms the user passes in at run-time we pick those many top magnitude values from our 2d array and set those index values in the do_we_pick_this column vector to be 1. After this, we check the vector and for those many dominant terms we store the real and imaginary vector parts and set the rest to be 0.
+
+Finally, we add the mean back to this filtered_data and write this back out to the output file. 
