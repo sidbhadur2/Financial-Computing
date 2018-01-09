@@ -1,0 +1,22 @@
+European_option_down_and_out_continuous_barrier Option
+
+Most of the base code in my program European_option_down_and_out_continuous_barrier was taken from Professor's code in Lesson 9 C++ samples. That was the code for the functions - option_price_put_black_scholes, option_price_call_black_scholes, N, option_price_delta_call_black_scholes, option_price_delta_put_black_scholes, closed_form_down_and_out_european_call_option, closed_form_down_and_in_european_put_option, closed_form_down_and_out_european_put_option and the get_uniform function as well. 
+
+My code simulates a price-path which is equally spaced and then I use the “get-four-paths-for-the-price-of-one-path” method. I check for any Si ≤ Barrier Price, resulting in the price path gets knocked-out, and a zero-payoff. Otherwise, the payoff is max(0, ST − K) for a call, and max(0, K − ST )for a put. Then the payoffs are averaged over the number of trials and discounted back using e^(-rt) to get the option price. This is the method of explicit simulation. 
+
+Using the same code, and just the values of S0 and ST , we compute pc according to equation 1 given in the pdf file and use a payoff max(0, ST −K)(1−pc for paths that did not get knocked-out, while all other paths have a payoff of zero. This formula is used for the adjustment term = (double)(1 - (exp(-((2 * log(initial_stock_price / barrier_price)*log(S / barrier_price))) / (expiration_time*pow(volatility, 2))))). Then these adjusted prices are averaged out over the number of trials and discounted back using e^(-rt) to get the option price, using just the initial- and final-price
+along with the adjustment-term. This is the method of the adjustment term to determine the option prices. 
+
+Finally , these above prices are compared against the theoretical price using the closed form formula pricing code from before. 
+
+European_down_and_out_discrete_barrier_option
+
+Similar to the code for the previous part, part 2's base code  my program European_down_and_out_discrete_barrier_option was taken from Professor's code in Lesson 9 C++ samples. That was the code for the functions - option_price_put_black_scholes, option_price_call_black_scholes, N, option_price_delta_call_black_scholes, option_price_delta_put_black_scholes, closed_form_down_and_out_european_call_option, closed_form_down_and_in_european_put_option, closed_form_down_and_out_european_put_option and the get_uniform function as well. 
+
+My code simulates a price-path equally spaced which corresponds to the price of the stock at the location of each discrete
+barrier.  and then I use the “get-four-paths-for-the-price-of-one-path” method. I check for any Si ≤ Barrier Price, resulting in the price path gets knocked-out, and a zero-payoff. Otherwise, the payoff is max(0, ST − K) for a call, and max(0, K − ST )for a put. Then the payoffs are averaged over the number of trials and discounted back using e^(-rt) to get the option price. This is the method of explicit simulation in the discrete barrier case. 
+Using the same code, and just the values of S0 and ST , we compute pc according to equation 1 given in the pdf file and pd from equation 2 in the same file and use a payoff max(0, ST −K)(1−pc for paths that did not get knocked-out, while all other paths have a payoff of zero. This formula is used for the adjustment term = (double)(1 - (exp(-((2 * log(initial_stock_price / barrier_price)*log(S / barrier_price))) / (expiration_time*pow(volatility, 2))))). Then these adjusted prices are averaged out over the number of trials and discounted back using e^(-rt) to get the option price, using just the initial- and final-price along with the adjustment-term. This is the method of the adjustment term to determine the option prices. 
+
+Finally , these above prices are compared against the theoretical price using the closed form formula pricing code from before.
+
+This was the information about my implementation for the European_option_down_and_out_continuous_barrier and European_down_and_out_discrete_barrier_option. 
